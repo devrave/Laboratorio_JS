@@ -44,3 +44,4 @@ function consulta(nombre){
 }
 let dato=prompt("Ingresa el nombre del producto: ")
 console.log(consulta(dato))
+

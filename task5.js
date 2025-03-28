@@ -5,29 +5,36 @@
 //  será dada por el usuario, es decir, si el usuario escribe 18, debería decirle que personas
 //  de la lsita cumplen con tener más de 18.
 
+const prompt = require("prompt-sync")();
 
-const prompt=require("prompt-sync")();
-const usuarios = [
-    { nombre: "Lizeth", edad: 15  },
-    { nombre: "Andres", edad: 18 },
-    {nombre: "Michaell", edad: 30},
-    {nombre:"Laura", edad: 20}
-   ];
-function filtar_edad(edad_minima){
-    for (i=0 ; i<usuarios.length; i++){
-        let posicion=usuarios[i];
-        let valor_edad=posicion.edad;
-        if (edad_minima<valor_edad){
-            lista=[posicion.nombre,posicion.edad]
-            return lista
+function filtrarUsuarios(usuarios, edadMinima) {
+    let usuariosFiltrados = [];
+    for (let i = 0; i < usuarios.length; i++) {
+        if (usuarios[i].edad >= edadMinima) {
+            usuariosFiltrados.push(usuarios[i]);
         }
-    let x=usuarios.length-1
-    if (x==i){
-        return null
     }
-    
-    }
+    return usuariosFiltrados;
 }
-let edad=prompt("Ingresa la edad: ")
-console.log(filtrar_edad(edad))
+
+
+const usuarios = [
+    { nombre: "Ana", edad: 25 },
+    { nombre: "Luis", edad: 17 },
+    { nombre: "Carlos", edad: 30 },
+    { nombre: "María", edad: 20 },
+    { nombre: "Sofía", edad: 15 }
+];
+
+
+let edadMinima = parseInt(prompt("Ingrese la edad mínima: "));
+
+
+let usuariosFiltrados = filtrarUsuarios(usuarios, edadMinima);
+
+if (usuariosFiltrados.length > 0) {
+    console.log("Usuarios que cumplen con la edad mínima:", usuariosFiltrados);
+} else {
+    console.log("No hay usuarios que cumplan con la edad mínima.");
+}
 
